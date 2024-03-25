@@ -4,7 +4,7 @@
 <template>
   <div>
     hello
-    <h1>qwe</h1>
+    BaseEditor : <BaseEditor />
   </div>
 </template>
 
