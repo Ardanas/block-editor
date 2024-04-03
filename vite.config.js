@@ -1,3 +1,4 @@
+import path from 'node:path'
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import UnoCSS from 'unocss/vite'
@@ -18,7 +19,7 @@ export default defineConfig({
         'vue',
         'vue-router',
       ],
-      dts: './auto-imports.d.ts',
+      dts: './auto-imports.d.js',
       // dirs: ['src/composables'],
       // eslintrc: {
       //   enabled: true, // <-- this
@@ -29,5 +30,10 @@ export default defineConfig({
   ],
   server: {
     port: 5174,
+  },
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, './src'),
+    },
   },
 })
