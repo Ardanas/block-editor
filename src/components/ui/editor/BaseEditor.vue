@@ -9,6 +9,7 @@ import TiptapUnderline from '@tiptap/extension-underline'
 import TextStyle from '@tiptap/extension-text-style'
 import { Color } from '@tiptap/extension-color'
 import Highlight from '@tiptap/extension-highlight'
+import Typography from '@tiptap/extension-typography'
 import GlobalDragHandle from 'tiptap-extension-global-drag-handle'
 import AutoJoiner from 'tiptap-extension-auto-joiner'
 import SlashCommand from './extensions/slash-command.js'
@@ -77,6 +78,7 @@ const editor = useEditor({
     Highlight.configure({
       multicolor: true,
     }),
+    Typography,
     SlashCommand,
     GlobalDragHandle.configure({
       scrollTreshold: 0,
