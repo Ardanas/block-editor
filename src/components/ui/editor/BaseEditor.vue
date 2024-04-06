@@ -4,6 +4,7 @@ import StarterKit from '@tiptap/starter-kit'
 import { cx } from 'class-variance-authority'
 // import FloatingMenu from '@tiptap/extension-floating-menu'
 import Placeholder from '@tiptap/extension-placeholder'
+import TiptapUnderline from '@tiptap/extension-underline'
 import TextStyle from '@tiptap/extension-text-style'
 import { Color } from '@tiptap/extension-color'
 import Highlight from '@tiptap/extension-highlight'
@@ -69,6 +70,7 @@ const editor = useEditor({
     //     duration: 100,
     //   },
     // }),
+    TiptapUnderline,
     TextStyle,
     Color,
     Highlight.configure({
