@@ -3,6 +3,7 @@ import { EditorContent, useEditor } from '@tiptap/vue-3'
 import StarterKit from '@tiptap/starter-kit'
 import { cx } from 'class-variance-authority'
 // import FloatingMenu from '@tiptap/extension-floating-menu'
+import Placeholder from '@tiptap/extension-placeholder'
 import TextStyle from '@tiptap/extension-text-style'
 import { Color } from '@tiptap/extension-color'
 import Highlight from '@tiptap/extension-highlight'
@@ -76,6 +77,15 @@ const editor = useEditor({
     SlashCommand,
     GlobalDragHandle.configure({
       scrollTreshold: 0,
+    }),
+    Placeholder.configure({
+      placeholder: ({ node }) => {
+        if (node.type.name === 'heading')
+          return `Heading ${node.attrs.level}`
+
+        return 'Press \' / \' for commands'
+      },
+      includeChildren: true,
     }),
     AutoJoiner,
 
