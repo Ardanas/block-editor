@@ -2,6 +2,7 @@
 import { EditorContent, useEditor } from '@tiptap/vue-3'
 import StarterKit from '@tiptap/starter-kit'
 import { cx } from 'class-variance-authority'
+import { InputRule } from '@tiptap/core'
 // import FloatingMenu from '@tiptap/extension-floating-menu'
 import TiptapLink from '@tiptap/extension-link'
 import Placeholder from '@tiptap/extension-placeholder'
@@ -12,6 +13,8 @@ import Highlight from '@tiptap/extension-highlight'
 import Typography from '@tiptap/extension-typography'
 import GlobalDragHandle from 'tiptap-extension-global-drag-handle'
 import AutoJoiner from 'tiptap-extension-auto-joiner'
+import HorizontalRule from '@tiptap/extension-horizontal-rule'
+
 import SlashCommand from './extensions/slash-command.js'
 
 const editor = useEditor({
@@ -97,6 +100,31 @@ const editor = useEditor({
         class: cx(
           'text-muted-foreground underline underline-offset-[3px] hover:text-primary transition-colors cursor-pointer',
         ),
+      },
+    }),
+    HorizontalRule.extend({
+      addInputRules() {
+        return [
+          new InputRule({
+            find: /^(?:---|—-|___\s|\*\*\*\s)$/,
+            handler: ({ state, range }) => {
+              const attributes = {}
+
+              const { tr } = state
+              const start = range.from
+              const end = range.to
+
+              tr.insert(start - 1, this.type.create(attributes)).delete(
+                tr.mapping.map(start),
+                tr.mapping.map(end),
+              )
+            },
+          }),
+        ]
+      },
+    }).configure({
+      HTMLAttributes: {
+        class: cx('mt-4 mb-6 border-0 border-t border-stone-300'),
       },
     }),
     AutoJoiner,

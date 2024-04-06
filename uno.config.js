@@ -74,6 +74,8 @@ export default defineConfig({
           --highlight-orange: #faebdd;
           --highlight-pink: #faf1f5;
           --highlight-gray: #f1f1ef;
+
+          --un-prose-hr: #d6d3d1
         }
 
         .dark {
