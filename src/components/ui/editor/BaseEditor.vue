@@ -14,7 +14,8 @@ import Typography from '@tiptap/extension-typography'
 import GlobalDragHandle from 'tiptap-extension-global-drag-handle'
 import AutoJoiner from 'tiptap-extension-auto-joiner'
 import HorizontalRule from '@tiptap/extension-horizontal-rule'
-
+import { TaskItem } from '@tiptap/extension-task-item'
+import { TaskList } from '@tiptap/extension-task-list'
 import SlashCommand from './extensions/slash-command.js'
 
 const editor = useEditor({
@@ -127,8 +128,18 @@ const editor = useEditor({
         class: cx('mt-4 mb-6 border-0 border-t border-stone-300'),
       },
     }),
+    TaskList.configure({
+      HTMLAttributes: {
+        class: cx('not-prose pl-2 '),
+      },
+    }),
+    TaskItem.configure({
+      HTMLAttributes: {
+        class: cx('flex gap-2 items-start my-4'),
+      },
+      nested: true,
+    }),
     AutoJoiner,
-
   ],
   autofocus: false,
 })

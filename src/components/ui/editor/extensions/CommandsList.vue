@@ -9,7 +9,6 @@ const props = defineProps({
     required: true,
   },
 })
-console.log('props', props)
 const selectedIndex = ref(0)
 
 watch(() => props.items, () => {
@@ -17,7 +16,6 @@ watch(() => props.items, () => {
 })
 
 function onKeyDown({ event }) {
-  console.log('event', event)
   if (event.key === 'ArrowUp') {
     upHandler()
     return true
@@ -51,7 +49,6 @@ function enterHandler() {
 
 function selectItem(index) {
   const item = props.items[index]
-  console.log('item', item)
   if (item)
     props.command(item)
 }
