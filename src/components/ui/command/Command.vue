@@ -1,10 +1,10 @@
 <script setup>
-import { computed } from "vue";
-import { ComboboxRoot, useForwardPropsEmits } from "radix-vue";
-import { cn } from "@/lib/utils";
+import { computed } from 'vue'
+import { ComboboxRoot, useForwardPropsEmits } from 'radix-vue'
+import { cn } from '@/lib/utils'
 
 const props = defineProps({
-  modelValue: { type: null, required: false, default: "" },
+  modelValue: { type: null, required: false, default: '' },
   defaultValue: { type: null, required: false },
   open: { type: Boolean, required: false, default: true },
   defaultOpen: { type: Boolean, required: false },
@@ -18,21 +18,21 @@ const props = defineProps({
   asChild: { type: Boolean, required: false },
   as: { type: null, required: false },
   class: { type: null, required: false },
-});
+})
 
 const emits = defineEmits([
-  "update:modelValue",
-  "update:open",
-  "update:searchTerm",
-]);
+  'update:modelValue',
+  'update:open',
+  'update:searchTerm',
+])
 
 const delegatedProps = computed(() => {
-  const { class: _, ...delegated } = props;
+  const { class: _, ...delegated } = props
 
-  return delegated;
-});
+  return delegated
+})
 
-const forwarded = useForwardPropsEmits(delegatedProps, emits);
+const forwarded = useForwardPropsEmits(delegatedProps, emits)
 </script>
 
 <template>
@@ -41,7 +41,7 @@ const forwarded = useForwardPropsEmits(delegatedProps, emits);
     :class="
       cn(
         'flex h-full w-full flex-col overflow-hidden rounded-md bg-popover text-popover-foreground',
-        props.class
+        props.class,
       )
     "
   >

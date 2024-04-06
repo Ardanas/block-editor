@@ -11,9 +11,18 @@ dependencies:
   '@tiptap/core':
     specifier: ^2.2.4
     version: 2.2.4(@tiptap/pm@2.2.4)
+  '@tiptap/extension-color':
+    specifier: ^2.2.5
+    version: 2.2.5(@tiptap/core@2.2.4)(@tiptap/extension-text-style@2.2.5)
   '@tiptap/extension-floating-menu':
     specifier: ^2.2.4
     version: 2.2.4(@tiptap/core@2.2.4)(@tiptap/pm@2.2.4)
+  '@tiptap/extension-highlight':
+    specifier: ^2.2.5
+    version: 2.2.5(@tiptap/core@2.2.4)
+  '@tiptap/extension-text-style':
+    specifier: ^2.2.5
+    version: 2.2.5(@tiptap/core@2.2.4)
   '@tiptap/pm':
     specifier: ^2.2.4
     version: 2.2.4
@@ -50,6 +59,12 @@ dependencies:
   tippy.js:
     specifier: ^6.3.7
     version: 6.3.7
+  tiptap-extension-auto-joiner:
+    specifier: ^0.1.1
+    version: 0.1.1
+  tiptap-extension-global-drag-handle:
+    specifier: ^0.1.6
+    version: 0.1.6
   vue:
     specifier: ^3.4.21
     version: 3.4.21(typescript@5.4.3)
@@ -1217,6 +1232,16 @@ packages:
       '@tiptap/core': 2.2.4(@tiptap/pm@2.2.4)
     dev: false
 
+  /@tiptap/extension-color@2.2.5(@tiptap/core@2.2.4)(@tiptap/extension-text-style@2.2.5):
+    resolution: {integrity: sha512-lEqqnHMWDBbwwKcIKPS0QqmXyO+a1v2yAmzGhvyhQdMdcbcfXSslrrOAXJ5fGyU8Hl9TFtBd8Atet0YA/8PuHQ==}
+    peerDependencies:
+      '@tiptap/core': ^2.0.0
+      '@tiptap/extension-text-style': ^2.0.0
+    dependencies:
+      '@tiptap/core': 2.2.4(@tiptap/pm@2.2.4)
+      '@tiptap/extension-text-style': 2.2.5(@tiptap/core@2.2.4)
+    dev: false
+
   /@tiptap/extension-document@2.2.4(@tiptap/core@2.2.4):
     resolution: {integrity: sha512-z+05xGK0OFoXV1GL+/8bzcZuWMdMA3+EKwk5c+iziG60VZcvGTF7jBRsZidlu9Oaj0cDwWHCeeo6L9SgSh6i2A==}
     peerDependencies:
@@ -1266,6 +1291,14 @@ packages:
 
   /@tiptap/extension-heading@2.2.4(@tiptap/core@2.2.4):
     resolution: {integrity: sha512-gkq7Ns2FcrOCRq7Q+VRYt5saMt2R9g4REAtWy/jEevJ5UV5vA2AiGnYDmxwAkHutoYU0sAUkjqx37wE0wpamNw==}
+    peerDependencies:
+      '@tiptap/core': ^2.0.0
+    dependencies:
+      '@tiptap/core': 2.2.4(@tiptap/pm@2.2.4)
+    dev: false
+
+  /@tiptap/extension-highlight@2.2.5(@tiptap/core@2.2.4):
+    resolution: {integrity: sha512-Ji8F9fkMGjL7723B4dymQKq+P5VBQ/PJMsTrHlbbIm3ZBWxRc43VHzT3bQJ4Qm66mO4YfpEC6eA5JDq44CrfWA==}
     peerDependencies:
       '@tiptap/core': ^2.0.0
     dependencies:
@@ -1326,6 +1359,14 @@ packages:
 
   /@tiptap/extension-strike@2.2.4(@tiptap/core@2.2.4):
     resolution: {integrity: sha512-/a2EwQgA+PpG17V2tVRspcrIY0SN3blwcgM7lxdW4aucGkqSKnf7+91dkhQEwCZ//o8kv9mBCyRoCUcGy6S5Xg==}
+    peerDependencies:
+      '@tiptap/core': ^2.0.0
+    dependencies:
+      '@tiptap/core': 2.2.4(@tiptap/pm@2.2.4)
+    dev: false
+
+  /@tiptap/extension-text-style@2.2.5(@tiptap/core@2.2.4):
+    resolution: {integrity: sha512-Hlx9WTS5VXjD9CqPrHIqGjYm5vKFjkKPSOf9H2kxZ8vdVBKpAOzLsfryq4rOLdP1bpmcX3zeOe2DGByUapbs1g==}
     peerDependencies:
       '@tiptap/core': ^2.0.0
     dependencies:
@@ -4271,6 +4312,14 @@ packages:
     resolution: {integrity: sha512-E1d3oP2emgJ9dRQZdf3Kkn0qJgI6ZLpyS5z6ZkY1DF3kaQaBsGZsndEpHwx+eC+tYM41HaSNvNtLx8tU57FzTQ==}
     dependencies:
       '@popperjs/core': 2.11.8
+    dev: false
+
+  /tiptap-extension-auto-joiner@0.1.1:
+    resolution: {integrity: sha512-n38N7qWUL3Iz6XdwxZLacSuE1itIAp6lzcVUYgi0K/d/eLydgFl07ZixBJ6XHCDESjw4wrRgRQQE9nvMGvn3QA==}
+    dev: false
+
+  /tiptap-extension-global-drag-handle@0.1.6:
+    resolution: {integrity: sha512-kjRFd/glJGTHEglHPNWtML1iINuEBG4eWvWbNIuuXE2LbylFXYHKVgLvZgxilqXSBH/o+lKDEp7/iL3lKvnxGw==}
     dev: false
 
   /to-fast-properties@2.0.0:

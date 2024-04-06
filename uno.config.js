@@ -64,6 +64,16 @@ export default defineConfig({
           --input:20 5.9% 90%;
           --ring:20 14.3% 4.1%;
           --radius: 0.25rem;
+
+          --highlight-default: #fff;
+          --highlight-purple: #f6f3f8;
+          --highlight-red: #fdebeb;
+          --highlight-yellow: #fbf4a2;
+          --highlight-blue: #c1ecf9;
+          --highlight-green: #acf79f;
+          --highlight-orange: #faebdd;
+          --highlight-pink: #faf1f5;
+          --highlight-gray: #f1f1ef;
         }
 
         .dark {
@@ -94,6 +104,16 @@ export default defineConfig({
           --border:12 6.5% 15.1%;
           --input:12 6.5% 15.1%;
           --ring:24 5.7% 82.9%;
+
+          --highlight-default: #000000;
+          --highlight-purple: #3f2c4b;
+          --highlight-red: #5c1a1a;
+          --highlight-yellow: #5c4b1a;
+          --highlight-blue: #1a3d5c;
+          --highlight-green: #1a5c20;
+          --highlight-orange: #5c3a1a;
+          --highlight-pink: #5c1a3a;
+          --highlight-gray: #3a3a3a;
         }
       `,
     },

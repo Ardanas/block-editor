@@ -11,7 +11,10 @@
   "dependencies": {
     "@radix-icons/vue": "^1.0.0",
     "@tiptap/core": "^2.2.4",
+    "@tiptap/extension-color": "^2.2.5",
     "@tiptap/extension-floating-menu": "^2.2.4",
+    "@tiptap/extension-highlight": "^2.2.5",
+    "@tiptap/extension-text-style": "^2.2.5",
     "@tiptap/pm": "^2.2.4",
     "@tiptap/starter-kit": "^2.2.4",
     "@tiptap/suggestion": "^2.2.4",
@@ -24,6 +27,8 @@
     "radix-vue": "^1.5.3",
     "tailwind-merge": "^2.2.2",
     "tippy.js": "^6.3.7",
+    "tiptap-extension-auto-joiner": "^0.1.1",
+    "tiptap-extension-global-drag-handle": "^0.1.6",
     "vue": "^3.4.21"
   },
   "devDependencies": {

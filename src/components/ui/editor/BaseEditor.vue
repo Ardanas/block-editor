@@ -1,18 +1,66 @@
 <script setup>
 import { EditorContent, useEditor } from '@tiptap/vue-3'
 import StarterKit from '@tiptap/starter-kit'
+import { cx } from 'class-variance-authority'
 // import FloatingMenu from '@tiptap/extension-floating-menu'
+import TextStyle from '@tiptap/extension-text-style'
+import { Color } from '@tiptap/extension-color'
+import Highlight from '@tiptap/extension-highlight'
+import GlobalDragHandle from 'tiptap-extension-global-drag-handle'
+import AutoJoiner from 'tiptap-extension-auto-joiner'
 import SlashCommand from './extensions/slash-command.js'
 
 const editor = useEditor({
-  content: `<p>I’m running Tiptap with Vue.js. 🎉</p>
-        <p></p>
-        <p></p>`,
+  content: `<h1>Welcome you !!</h1>
+    <p>I’m running Tiptap with Vue.js. 🎉</p>
+    <p></p>
+    <p></p>
+  `,
   extensions: [
     StarterKit.configure({
       heading: {
         levels: [1, 2, 3, 4],
       },
+      horizontalRule: false,
+      bulletList: {
+        HTMLAttributes: {
+          class: cx('list-disc list-outside leading-3 -mt-2'),
+        },
+      },
+      orderedList: {
+        HTMLAttributes: {
+          class: cx('list-decimal list-outside leading-3 -mt-2'),
+        },
+      },
+      listItem: {
+        HTMLAttributes: {
+          class: cx('leading-normal -mb-2'),
+        },
+      },
+      blockquote: {
+        HTMLAttributes: {
+          class: cx('border-l-4 border-primary'),
+        },
+      },
+      codeBlock: {
+        HTMLAttributes: {
+          class: cx(
+            'rounded-md bg-muted text-muted-foreground border p-5 font-mono font-medium',
+          ),
+        },
+      },
+      code: {
+        HTMLAttributes: {
+          class: cx('rounded-md bg-muted  px-1.5 py-1 font-mono font-medium'),
+          spellcheck: 'false',
+        },
+      },
+      dropcursor: {
+        color: '#DBEAFE',
+        width: 4,
+      },
+      gapcursor: false,
+
     }),
     // FloatingMenu.configure({
     //   element: document.querySelector('.floating-menu'),
@@ -20,39 +68,47 @@ const editor = useEditor({
     //     duration: 100,
     //   },
     // }),
+    TextStyle,
+    Color,
+    Highlight.configure({
+      multicolor: true,
+    }),
     SlashCommand,
-    // Highlight.configure({
-    //   multicolor: true,
-    // }),
+    GlobalDragHandle.configure({
+      scrollTreshold: 0,
+    }),
+    AutoJoiner,
+
   ],
-  autofocus: true,
+  autofocus: false,
 })
 
 onUnmounted(() => {
   editor.value.destroy()
 })
 
-function focus() {
-  editor.value?.chain().focus().run()
-}
+// function focus() {
+//   editor.value?.chain().focus().run()
+// }
+
+// const open = ref(false)
+// function setOpen(isOpen) {
+//   open.value = isOpen
+// }
 </script>
 
 <template>
-  <div border p-lg @click="focus">
-    hello:
-    <EditorContent :editor="editor" />
-    <!-- <bubble-menu :editor="editor" /> -->
-    <!-- <FloatingMenu v-if="editor" :editor="editor" :tippy-options="{ duration: 100 }">
-      <Button :class="{ 'is-active': editor.isActive('heading', { level: 1 }) }" @click="editor.chain().focus().toggleHeading({ level: 1 }).run()">
-        H1
-      </Button>
-      <Button :class="{ 'is-active': editor.isActive('heading', { level: 2 }) }" @click="editor.chain().focus().toggleHeading({ level: 2 }).run()">
-        H2
-      </Button>
-      <Button :class="{ 'is-active': editor.isActive('bulletList') }" @click="editor.chain().focus().toggleBulletList().run()">
-        Bullet List
-      </Button>
-    </FloatingMenu> -->
+  <div>
+    <EditorContent :editor="editor" max-w-full text-lg prose focus:outline-none dark:prose-invert />
+    <EditorBubble v-if="editor" :editor="editor">
+      <NodeSelector />
+      <Separator orientation="vertical" />
+      <LinkSelector />
+      <Separator orientation="vertical" />
+      <TextButtonsSelector />
+      <Separator orientation="vertical" />
+      <ColorSelector />
+    </EditorBubble>
   </div>
 </template>
 

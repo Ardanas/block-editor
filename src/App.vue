@@ -2,19 +2,13 @@
 </script>
 
 <template>
-  <div>
-    <Button variant="parimary" size="large">
-      hello
-    </Button>
-
-    <Badge>Badge</Badge>
-
-    <Input />
-    <br>
-    BaseEditor : <BaseEditor prose />
+  <div p-lg>
+    <BaseEditor border />
   </div>
 </template>
 
-<style scoped>
-
+<style>
+:focus-visible {
+  outline: none;
+}
 </style>
