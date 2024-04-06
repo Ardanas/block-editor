@@ -3,6 +3,7 @@ import { EditorContent, useEditor } from '@tiptap/vue-3'
 import StarterKit from '@tiptap/starter-kit'
 import { cx } from 'class-variance-authority'
 // import FloatingMenu from '@tiptap/extension-floating-menu'
+import TiptapLink from '@tiptap/extension-link'
 import Placeholder from '@tiptap/extension-placeholder'
 import TiptapUnderline from '@tiptap/extension-underline'
 import TextStyle from '@tiptap/extension-text-style'
@@ -88,6 +89,13 @@ const editor = useEditor({
         return 'Press \' / \' for commands'
       },
       includeChildren: true,
+    }),
+    TiptapLink.configure({
+      HTMLAttributes: {
+        class: cx(
+          'text-muted-foreground underline underline-offset-[3px] hover:text-primary transition-colors cursor-pointer',
+        ),
+      },
     }),
     AutoJoiner,
 
