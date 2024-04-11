@@ -18,14 +18,13 @@ import { TaskItem } from '@tiptap/extension-task-item'
 import { TaskList } from '@tiptap/extension-task-list'
 import CodeBlockLowlight from '@tiptap/extension-code-block-lowlight'
 import { FocusClasses as Focus } from '@tiptap/extension-focus'
+import { CharacterCount } from '@tiptap/extension-character-count'
 import { common, createLowlight } from 'lowlight'
-import css from 'highlight.js/lib/languages/css'
-
 import SlashCommand from './extensions/slash-command.js'
 import { Table, TableCell, TableHeader, TableRow } from './extensions/table'
 
 const lowlight = createLowlight(common)
-lowlight.register({ css })
+
 const editor = useEditor({
   content: `<h1>Welcome you !!</h1>
     <p>I’m running Tiptap with Vue.js. 🎉</p>
@@ -85,6 +84,9 @@ const editor = useEditor({
     SlashCommand,
     GlobalDragHandle.configure({
       scrollTreshold: 0,
+    }),
+    CharacterCount.configure({
+      limit: 50000,
     }),
     Placeholder.configure({
       // placeholder: ({ node }) => {
@@ -172,6 +174,13 @@ onUnmounted(() => {
 
 <template>
   <div>
+    <header w-full bg-white text-right>
+      <div v-if="editor" color-gray-500>
+        {{ editor.storage.characterCount.characters() }}/{{ limit }} characters
+        <br>
+        {{ editor.storage.characterCount.words() }} words
+      </div>
+    </header>
     <EditorContent :editor="editor" max-w-full prose-truegray focus:outline-none dark:prose-invert />
     <EditorBubble v-if="editor" :editor="editor">
       <NodeSelector />
