@@ -16,9 +16,15 @@ import AutoJoiner from 'tiptap-extension-auto-joiner'
 import HorizontalRule from '@tiptap/extension-horizontal-rule'
 import { TaskItem } from '@tiptap/extension-task-item'
 import { TaskList } from '@tiptap/extension-task-list'
+import CodeBlockLowlight from '@tiptap/extension-code-block-lowlight'
+import { common, createLowlight } from 'lowlight'
+import css from 'highlight.js/lib/languages/css'
+
 import SlashCommand from './extensions/slash-command.js'
 import { Table, TableCell, TableHeader, TableRow } from './extensions/table'
 
+const lowlight = createLowlight(common)
+lowlight.register({ css })
 const editor = useEditor({
   content: `<h1>Welcome you !!</h1>
     <p>I’m running Tiptap with Vue.js. 🎉</p>
@@ -49,13 +55,6 @@ const editor = useEditor({
       blockquote: {
         HTMLAttributes: {
           class: cx('border-l-4 border-primary'),
-        },
-      },
-      codeBlock: {
-        HTMLAttributes: {
-          class: cx(
-            'rounded-md bg-muted text-muted-foreground border p-5 font-mono font-medium',
-          ),
         },
       },
       code: {
@@ -144,6 +143,15 @@ const editor = useEditor({
         class: cx('flex gap-2 items-start my-4'),
       },
       nested: true,
+    }),
+    CodeBlockLowlight.configure({
+      lowlight,
+      defaultLanguage: null,
+      HTMLAttributes: {
+        class: cx(
+          'rounded-md bg-muted text-muted-foreground border p-5 font-mono font-medium',
+        ),
+      },
     }),
     AutoJoiner,
   ],
