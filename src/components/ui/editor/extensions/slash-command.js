@@ -2,7 +2,7 @@ import { VueRenderer } from '@tiptap/vue-3'
 import tippy from 'tippy.js'
 import { Extension } from '@tiptap/core'
 import Suggestion from '@tiptap/suggestion'
-import { CheckSquare, Code, Heading1, Heading2, Heading3, Italic, List, ListOrdered, TextQuote, Type } from 'lucide-vue-next'
+import { CheckSquare, Code, Heading1, Heading2, Heading3, Italic, List, ListOrdered, Table2, TextQuote, Type } from 'lucide-vue-next'
 
 import CommandsList from './CommandsList.vue'
 
@@ -74,6 +74,16 @@ function getSuggestionItems({
           .deleteRange(range)
           .setNode('heading', { level: 3 })
           .run()
+      },
+    },
+    {
+      title: 'table',
+      description: 'Insert a table',
+      searchTerms: ['table', 'cell', 'row'],
+      // shouldBeHidden: editor => editor.isActive('columns'),
+      icon: Table2,
+      command: ({ editor, range }) => {
+        editor.chain().focus().deleteRange(range).insertTable({ rows: 3, cols: 3, withHeaderRow: false }).run()
       },
     },
     {

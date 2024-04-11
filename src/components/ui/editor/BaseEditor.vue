@@ -17,6 +17,7 @@ import HorizontalRule from '@tiptap/extension-horizontal-rule'
 import { TaskItem } from '@tiptap/extension-task-item'
 import { TaskList } from '@tiptap/extension-task-list'
 import SlashCommand from './extensions/slash-command.js'
+import { Table, TableCell, TableHeader, TableRow } from './extensions/table'
 
 const editor = useEditor({
   content: `<h1>Welcome you !!</h1>
@@ -76,6 +77,10 @@ const editor = useEditor({
     //     duration: 100,
     //   },
     // }),
+    Table,
+    TableCell,
+    TableHeader,
+    TableRow,
     TiptapUnderline,
     TextStyle,
     Color,
@@ -92,7 +97,8 @@ const editor = useEditor({
         if (node.type.name === 'heading')
           return `Heading ${node.attrs.level}`
 
-        return 'Press \' / \' for commands'
+        // return 'Press \' / \' for commands'
+        return ''
       },
       includeChildren: true,
     }),
@@ -160,7 +166,7 @@ onUnmounted(() => {
 
 <template>
   <div>
-    <EditorContent :editor="editor" max-w-full text-lg prose focus:outline-none dark:prose-invert />
+    <EditorContent :editor="editor" max-w-full prose-truegray focus:outline-none dark:prose-invert />
     <EditorBubble v-if="editor" :editor="editor">
       <NodeSelector />
       <Separator orientation="vertical" />
