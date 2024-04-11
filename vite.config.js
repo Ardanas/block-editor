@@ -4,6 +4,7 @@ import vue from '@vitejs/plugin-vue'
 import UnoCSS from 'unocss/vite'
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
+import postcssNesting from 'postcss-nesting'
 
 export default defineConfig({
   plugins: [
@@ -28,6 +29,13 @@ export default defineConfig({
     }),
     Components({ dirs: ['src/components/'], dts: true }),
   ],
+  css: {
+    postcss: {
+      plugins: [
+        postcssNesting,
+      ],
+    },
+  },
   server: {
     port: 5174,
   },

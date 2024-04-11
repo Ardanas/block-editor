@@ -17,6 +17,7 @@ import HorizontalRule from '@tiptap/extension-horizontal-rule'
 import { TaskItem } from '@tiptap/extension-task-item'
 import { TaskList } from '@tiptap/extension-task-list'
 import CodeBlockLowlight from '@tiptap/extension-code-block-lowlight'
+import { FocusClasses as Focus } from '@tiptap/extension-focus'
 import { common, createLowlight } from 'lowlight'
 import css from 'highlight.js/lib/languages/css'
 
@@ -68,14 +69,7 @@ const editor = useEditor({
         width: 4,
       },
       gapcursor: false,
-
     }),
-    // FloatingMenu.configure({
-    //   element: document.querySelector('.floating-menu'),
-    //   tippyOptions: {
-    //     duration: 100,
-    //   },
-    // }),
     Table,
     TableCell,
     TableHeader,
@@ -86,20 +80,24 @@ const editor = useEditor({
     Highlight.configure({
       multicolor: true,
     }),
+    Focus,
     Typography,
     SlashCommand,
     GlobalDragHandle.configure({
       scrollTreshold: 0,
     }),
     Placeholder.configure({
-      placeholder: ({ node }) => {
-        if (node.type.name === 'heading')
-          return `Heading ${node.attrs.level}`
+      // placeholder: ({ node }) => {
+      //   console.log('node', node)
+      //   if (node.type.name === 'heading')
+      //     return `Heading ${node.attrs.level}`
 
-        // return 'Press \' / \' for commands'
-        return ''
-      },
+      //   return 'Press \' / \' for commands'
+      //   // return ''
+      // },
       includeChildren: true,
+      showOnlyCurrent: false,
+      placeholder: () => '',
     }),
     TiptapLink.configure({
       HTMLAttributes: {

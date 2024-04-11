@@ -1,11 +1,13 @@
 @import './animations.css';
 @import './lists.css';
-/* @import './placeholder.css'; */
+@import './placeholder.css';
 @import './table.css';
 @import './typography.css';
+@import './editor.css';
+@import './prosemirror.css';
 
 .ProseMirror {
-  @apply caret-black dark:caret-white outline-0 pr-8 pl-20 py-16 z-0 lg:pl-8 lg:pr-8;
+  @apply caret-black dark:caret-white outline-0 p-12 px-8 sm:px-12;
 
   & > * {
     @apply mx-auto max-w-2xl;
@@ -33,7 +35,3 @@
   }
 }
 
-
-
-/* @import './prosemirror.css'; */
-/* @import './editor.css'; */
