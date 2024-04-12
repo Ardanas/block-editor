@@ -19,18 +19,36 @@ import { TaskList } from '@tiptap/extension-task-list'
 import CodeBlockLowlight from '@tiptap/extension-code-block-lowlight'
 import { FocusClasses as Focus } from '@tiptap/extension-focus'
 import { CharacterCount } from '@tiptap/extension-character-count'
+import Collaboration from '@tiptap/extension-collaboration'
+import CollaborationCursor from '@tiptap/extension-collaboration-cursor'
+import { HocuspocusProvider } from '@hocuspocus/provider'
+import * as Y from 'yjs'
 import { common, createLowlight } from 'lowlight'
 import SlashCommand from './extensions/slash-command.js'
 import { Table, TableCell, TableHeader, TableRow } from './extensions/table'
 
-const lowlight = createLowlight(common)
+const ydoc = new Y.Doc()
 
+const provider = new HocuspocusProvider({
+  url: 'ws://127.0.0.1:1234',
+  name: 'example-document',
+  document: ydoc,
+})
+
+const lowlight = createLowlight(common)
+const limit = 50000
 const editor = useEditor({
-  content: `<h1>Welcome you !!</h1>
-    <p>I’m running Tiptap with Vue.js. 🎉</p>
-    <p></p>
-    <p></p>
-  `,
+  onCreate: ({ editor }) => {
+    provider?.on('synced', () => {
+      if (editor.isEmpty) {
+        editor.commands.setContent(`<h1>Welcome you !!</h1>
+          <p>I’m running Tiptap with Vue.js. 🎉</p>
+          <p></p>
+          <p></p>
+      `)
+      }
+    })
+  },
   extensions: [
     StarterKit.configure({
       heading: {
@@ -68,6 +86,17 @@ const editor = useEditor({
         width: 4,
       },
       gapcursor: false,
+      history: false,
+    }),
+    Collaboration.configure({
+      document: ydoc,
+    }),
+    CollaborationCursor.configure({
+      provider,
+      user: {
+        name: `user_${Math.random()}`,
+        color: '#fb7185',
+      },
     }),
     Table,
     TableCell,
@@ -86,7 +115,7 @@ const editor = useEditor({
       scrollTreshold: 0,
     }),
     CharacterCount.configure({
-      limit: 50000,
+      limit,
     }),
     Placeholder.configure({
       // placeholder: ({ node }) => {

@@ -9,10 +9,13 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@hocuspocus/provider": "^2.11.3",
     "@radix-icons/vue": "^1.0.0",
     "@tiptap/core": "^2.2.4",
     "@tiptap/extension-character-count": "^2.3.0",
     "@tiptap/extension-code-block-lowlight": "^2.3.0",
+    "@tiptap/extension-collaboration": "^2.3.0",
+    "@tiptap/extension-collaboration-cursor": "^2.3.0",
     "@tiptap/extension-color": "^2.2.5",
     "@tiptap/extension-floating-menu": "^2.2.4",
     "@tiptap/extension-focus": "^2.3.0",
@@ -45,7 +48,9 @@
     "tippy.js": "^6.3.7",
     "tiptap-extension-auto-joiner": "^0.1.1",
     "tiptap-extension-global-drag-handle": "^0.1.6",
-    "vue": "^3.4.21"
+    "vue": "^3.4.21",
+    "y-prosemirror": "^1.2.3",
+    "yjs": "^13.6.14"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^2.9.0",
