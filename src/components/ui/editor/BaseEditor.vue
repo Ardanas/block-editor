@@ -25,6 +25,7 @@ import { HocuspocusProvider } from '@hocuspocus/provider'
 import * as Y from 'yjs'
 import { common, createLowlight } from 'lowlight'
 import SlashCommand from './extensions/slash-command.js'
+import TableofContents from './extensions/TableOfContents'
 import { Table, TableCell, TableHeader, TableRow } from './extensions/table'
 
 const ydoc = new Y.Doc()
@@ -38,6 +39,7 @@ const provider = new HocuspocusProvider({
 const lowlight = createLowlight(common)
 const limit = 50000
 const editor = useEditor({
+  autofocus: false,
   onCreate: ({ editor }) => {
     provider?.on('synced', () => {
       if (editor.isEmpty) {
@@ -111,6 +113,7 @@ const editor = useEditor({
     Focus,
     Typography,
     SlashCommand,
+    TableofContents,
     GlobalDragHandle.configure({
       scrollTreshold: 0,
     }),
@@ -184,7 +187,6 @@ const editor = useEditor({
     }),
     AutoJoiner,
   ],
-  autofocus: false,
 })
 
 onUnmounted(() => {
@@ -230,3 +232,4 @@ onUnmounted(() => {
   }
 }
 </style>
+./extensions/Table/index.js
