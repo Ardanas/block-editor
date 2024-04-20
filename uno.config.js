@@ -25,13 +25,13 @@ export default defineConfig({
     presetAnimations(),
     presetShadcn(),
   ],
-  // shortcuts: [
-  //   {
-  //     'flex-center': 'flex justify-center items-center',
-  //     'flex-col-center': 'flex flex-col justify-center items-center',
-  //     'card': 'bg-background rounded-2 shadow-md ',
-  //   },
-  // ],
+  shortcuts: [
+    {
+      'flex-center': 'flex justify-center items-center',
+      'flex-col-center': 'flex flex-col justify-center items-center',
+      'card': 'bg-background rounded-2 shadow-md ',
+    },
+  ],
   preflights: [
     {
       getCSS: () => `

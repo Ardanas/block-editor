@@ -2,7 +2,7 @@ import { VueRenderer } from '@tiptap/vue-3'
 import tippy from 'tippy.js'
 import { Extension } from '@tiptap/core'
 import Suggestion from '@tiptap/suggestion'
-import { Book, CheckSquare, Code, Heading1, Heading2, Heading3, Italic, List, ListOrdered, Table2, TextQuote, Type } from 'lucide-vue-next'
+import { Book, CheckSquare, Code, Heading1, Heading2, Heading3, Image, Italic, List, ListOrdered, Table2, TextQuote, Type } from 'lucide-vue-next'
 
 import CommandsList from './CommandsList.vue'
 
@@ -93,6 +93,15 @@ function getSuggestionItems({
       description: 'Insert a table of contents',
       command: ({ editor }) => {
         editor.chain().focus().insertTableOfContents().run()
+      },
+    },
+    {
+      title: 'Image',
+      icon: Image,
+      description: 'Insert an image',
+      searchTerms: ['img'],
+      command: ({ editor }) => {
+        editor.chain().focus().setImageUpload().run()
       },
     },
     {

@@ -26,7 +26,9 @@ import * as Y from 'yjs'
 import { common, createLowlight } from 'lowlight'
 import SlashCommand from './extensions/slash-command.js'
 import TableofContents from './extensions/TableOfContents'
-import { Table, TableCell, TableHeader, TableRow } from './extensions/table'
+import ImageBlock from './extensions/ImageBlock'
+import ImageUpload from './extensions/ImageUpload'
+import { Table, TableCell, TableHeader, TableRow } from './extensions/Table'
 
 const ydoc = new Y.Doc()
 
@@ -107,6 +109,8 @@ const editor = useEditor({
     TiptapUnderline,
     TextStyle,
     Color,
+    ImageBlock,
+    ImageUpload,
     Highlight.configure({
       multicolor: true,
     }),
